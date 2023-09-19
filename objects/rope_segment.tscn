@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://brtgpcmu3mw2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_58g2c"]
+friction = 0.2
+
+[sub_resource type="GDScript" id="GDScript_qgcaa"]
+script/source = "extends RigidBody2D
+
+func prevSegment() -> PhysicsBody2D:
+	return get_node($PinJoint2D.node_a)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6nxcq"]
+b = Vector2(0, 20)
+
+[node name="RopeSegment" type="RigidBody2D"]
+collision_layer = 0
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 20)
+physics_material_override = SubResource("PhysicsMaterial_58g2c")
+linear_damp = 1.0
+angular_damp = 2.0
+script = SubResource("GDScript_qgcaa")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_b = NodePath("..")
+softness = 0.01
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 20)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1.0
+offset_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_6nxcq")

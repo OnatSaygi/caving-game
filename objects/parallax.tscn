@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbiuk3q8ty5rj"]
+
+[ext_resource type="Texture2D" uid="uid://25x5oeufdms3" path="res://assets/Free-Horizontal-Game-Backgrounds/game_background_2/layers/sky.png" id="1_akper"]
+[ext_resource type="Texture2D" uid="uid://ske4drvjlan5" path="res://assets/darkgreeenBG.png" id="1_y5yvd"]
+[ext_resource type="Texture2D" uid="uid://cipwuubergmyb" path="res://assets/Free-Horizontal-Game-Backgrounds/game_background_2/layers/rocks_3.png" id="2_v7t7x"]
+[ext_resource type="Texture2D" uid="uid://dyenhoqdiervd" path="res://assets/Free-Horizontal-Game-Backgrounds/game_background_2/layers/rocks_2.png" id="3_jh6ax"]
+[ext_resource type="Texture2D" uid="uid://bdp743d16pjqf" path="res://assets/Free-Horizontal-Game-Backgrounds/game_background_2/layers/rocks_1.png" id="4_mhm43"]
+
+[node name="parallax" type="ParallaxBackground"]
+offset = Vector2(0, -1600)
+transform = Transform2D(1, 0, 0, 1, 0, -1600)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="caveBG" type="Sprite2D" parent="ParallaxLayer5"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 1000)
+texture = ExtResource("1_y5yvd")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="sky" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_akper")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.08, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="rock 3" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(1, 0)
+texture = ExtResource("2_v7t7x")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.12, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="rock 2" type="Sprite2D" parent="ParallaxLayer3"]
+texture = ExtResource("3_jh6ax")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.18, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="rock 1" type="Sprite2D" parent="ParallaxLayer4"]
+texture = ExtResource("4_mhm43")
+centered = false

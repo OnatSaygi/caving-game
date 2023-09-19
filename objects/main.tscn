@@ -1,29 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7gtre41sy2t8"]
+[gd_scene load_steps=7 format=3 uid="uid://b7gtre41sy2t8"]
 
 [ext_resource type="Script" path="res://objects/main.gd" id="1_gn18o"]
 [ext_resource type="PackedScene" uid="uid://br20gx4fu7ib2" path="res://objects/tile_map.tscn" id="1_rjwna"]
 [ext_resource type="PackedScene" uid="uid://koalireiwccl" path="res://objects/player.tscn" id="2_nq1sq"]
-[ext_resource type="Texture2D" uid="uid://712nb3beveqg" path="res://assets/CaveTilesetPack/PNG files/ParallaxCave1.png" id="4_22lb5"]
+[ext_resource type="PackedScene" uid="uid://c8rn8oo2giaha" path="res://objects/rope_base.tscn" id="5_qc4gx"]
+[ext_resource type="PackedScene" uid="uid://bbiuk3q8ty5rj" path="res://objects/parallax.tscn" id="5_tpadb"]
+
+[sub_resource type="Environment" id="Environment_n2br3"]
+background_mode = 3
+glow_enabled = true
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_gn18o")
 
 [node name="TileMap" parent="." instance=ExtResource("1_rjwna")]
-layer_0/name = "world"
-layer_1/name = "marker"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array()
 
-[node name="player" parent="." instance=ExtResource("2_nq1sq")]
-position = Vector2(14, -77)
+[node name="player" parent="TileMap" instance=ExtResource("2_nq1sq")]
+position = Vector2(1210, -1700)
+scale = Vector2(12, 12)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n2br3")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="parallax" parent="." instance=ExtResource("5_tpadb")]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("4_22lb5")
+[node name="RopeBase" parent="." instance=ExtResource("5_qc4gx")]
+position = Vector2(-120, -723)

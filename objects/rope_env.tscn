@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://dq6mblsg5pyhb"]
+
+[ext_resource type="PackedScene" uid="uid://c8rn8oo2giaha" path="res://objects/rope_base.tscn" id="1_ore3g"]
+[ext_resource type="Texture2D" uid="uid://5c3rd641clkw" path="res://icon.svg" id="3_bq72a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g87x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qxa32"]
+friction = 0.1
+
+[sub_resource type="GDScript" id="GDScript_wdeos"]
+script/source = "extends AnimatableBody2D
+
+
+const SPEED = 30000.0
+const JUMP_VELOCITY = -400.0
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = 0 #ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+
+func _physics_process(delta):
+	#var vec = get_viewport().get_mouse_position() - self.position # getting the vector from self to the mouse
+	#vec = vec.normalized() * delta * SPEED # normalize it and multiply by time and speed
+	#
+	#position += vec # move by that vector
+	#move_and_collide(vec)
+	position = get_viewport().get_mouse_position()
+"
+
+[sub_resource type="Gradient" id="Gradient_qcohi"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.716599)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ph7q"]
+gradient = SubResource("Gradient_qcohi")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_otsuw"]
+radius = 50.0
+
+[node name="RopeEnv" type="Node2D"]
+
+[node name="RopeBase" parent="." instance=ExtResource("1_ore3g")]
+position = Vector2(286, 33)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(292, 103)
+
+[node name="ColorRect" type="ColorRect" parent="Wall"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_6g87x")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(273, 148)
+
+[node name="ColorRect" type="ColorRect" parent="Wall2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+shape = SubResource("RectangleShape2D_6g87x")
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+position = Vector2(252, 249)
+
+[node name="ColorRect" type="ColorRect" parent="Wall3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+shape = SubResource("RectangleShape2D_6g87x")
+
+[node name="CharacterBody2D" type="AnimatableBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_qxa32")
+script = SubResource("GDScript_wdeos")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3ph7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_otsuw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_bq72a")
