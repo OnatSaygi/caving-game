@@ -20,7 +20,7 @@ func _process(delta):
 		get_parent().add_child(bomb)
 	
 	$Sprite2D.flip_h = directionPast != 1
-
+	#$PointLight2D.scale.x = abs($PointLight2D.scale.x) * int($Sprite2D.flip_h) * 2 - 1
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():

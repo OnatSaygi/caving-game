@@ -1,32 +1,35 @@
 extends RigidBody2D
 
-var direction = Vector2(0, 0)
-const SPEED = 400
+signal boom
 
-# Called when the node enters the scene tree for the first time.
+var direction = Vector2(0, 0)
+const SPEED = 200
+
 func _ready():
 	print(direction)
 	set_axis_velocity(direction*SPEED)
-	pass # Replace with function body.
+	#boom.connect(get_parent().get_parent()_on_boom.bind())
+	#button.pressed.connect(_on_pressed.bind(button))
+
+#func _on_pressed(button):
+#    print(button.name, " was pressed")
 
 func explode():
+	emit_signal('boom')
 	var collidingBodies = get_colliding_bodies()
-	if collidingBodies:
-		for i in collidingBodies:
-			print(i.name)
-			if i.name != 'TileMap':
-				continue
-			var pos = i.local_to_map(position)
-			print(pos, 'pos')
-			var holes = []
-			for k in range(-1, 2):
-				for j in range(-1, 2):
-					var posDelta = Vector2i(k, j)
-					holes.append(pos+posDelta)
-					#i.erase_cell(0, pos+posDelta)
-					i.set_cells_terrain_connect(i.layerGround, holes, 0, -1)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	for i in collidingBodies:
+		print(i.name)
+		if i.name != 'TileMap':
+			continue
+		var pos = i.local_to_map(position)
+		print(pos, 'pos')
+		var holes = []
+		for k in range(-1, 2):
+			for j in range(-1, 2):
+				var posDelta = Vector2i(k, j)
+				holes.append(pos+posDelta)
+				i.set_cells_terrain_connect(0, holes, 0, -1)
+
 func _process(delta):
 	pass
 

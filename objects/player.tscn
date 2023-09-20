@@ -6,18 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rol0x"]
 size = Vector2(18, 61)
 
-[sub_resource type="Gradient" id="Gradient_uujhr"]
-offsets = PackedFloat32Array(0, 0.765182)
+[sub_resource type="Gradient" id="Gradient_yg84y"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bbvod"]
-gradient = SubResource("Gradient_uujhr")
-width = 10
-height = 10
+gradient = SubResource("Gradient_yg84y")
+width = 100
+height = 100
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="player" type="CharacterBody2D"]
+position = Vector2(-1, -47)
 floor_max_angle = 1.0472
 floor_snap_length = 20.0
 script = ExtResource("1_4d14r")
@@ -42,6 +43,6 @@ blend_mode = 2
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
-shadow_filter_smooth = 3.0
+shadow_filter_smooth = 2.0
 texture = SubResource("GradientTexture2D_bbvod")
-texture_scale = 50.0
+texture_scale = 20.0

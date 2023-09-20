@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7gtre41sy2t8"]
+[gd_scene load_steps=6 format=3 uid="uid://b7gtre41sy2t8"]
 
-[ext_resource type="Script" path="res://objects/main.gd" id="1_gn18o"]
 [ext_resource type="PackedScene" uid="uid://br20gx4fu7ib2" path="res://objects/tile_map.tscn" id="1_rjwna"]
 [ext_resource type="PackedScene" uid="uid://koalireiwccl" path="res://objects/player.tscn" id="2_nq1sq"]
 [ext_resource type="PackedScene" uid="uid://c8rn8oo2giaha" path="res://objects/rope_base.tscn" id="5_qc4gx"]
@@ -11,7 +10,6 @@ background_mode = 3
 glow_enabled = true
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_gn18o")
 
 [node name="TileMap" parent="." instance=ExtResource("1_rjwna")]
 

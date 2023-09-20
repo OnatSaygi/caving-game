@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cc687lawserw"]
 
 [ext_resource type="Script" path="res://Bomb.gd" id="1_wrpo0"]
-[ext_resource type="Texture2D" uid="uid://5c3rd641clkw" path="res://icon.svg" id="2_13ncs"]
+[ext_resource type="Texture2D" uid="uid://bru7je3jaafdx" path="res://assets/oyun_dinamit.png" id="2_djh2n"]
 [ext_resource type="AudioStream" uid="uid://bsi00b1mii1x5" path="res://assets/FreeSFX/GameSFX/Alarms Blip Beeps/Retro Beeep 06.wav" id="3_qero5"]
 [ext_resource type="AudioStream" uid="uid://ctsoc166wobsc" path="res://assets/FreeSFX/GameSFX/Impact/Retro Impact 20.wav" id="4_gukgw"]
 
@@ -150,8 +150,10 @@ script = ExtResource("1_wrpo0")
 shape = SubResource("RectangleShape2D_j6g2p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.3)
-texture = ExtResource("2_13ncs")
+texture_filter = 1
+position = Vector2(-2.38419e-07, 4.76837e-07)
+scale = Vector2(0.6, 0.542857)
+texture = ExtResource("2_djh2n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"

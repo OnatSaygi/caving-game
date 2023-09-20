@@ -1,15 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8rn8oo2giaha"]
+[gd_scene load_steps=3 format=3 uid="uid://c8rn8oo2giaha"]
 
-[ext_resource type="Shader" path="res://objects/rope_env.gdshader" id="1_cwuql"]
 [ext_resource type="Script" path="res://objects/rope_base.gd" id="1_j4562"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_windt"]
-shader = ExtResource("1_cwuql")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2w3gg"]
 
 [node name="RopeBase" type="StaticBody2D"]
-material = SubResource("ShaderMaterial_windt")
 script = ExtResource("1_j4562")
 
 [node name="ColorRect" type="ColorRect" parent="."]

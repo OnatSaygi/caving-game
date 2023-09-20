@@ -27,8 +27,8 @@ collision_layer = 0
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 20)
 physics_material_override = SubResource("PhysicsMaterial_58g2c")
-linear_damp = 1.0
-angular_damp = 2.0
+linear_damp = 0.5
+angular_damp = 3.0
 script = SubResource("GDScript_qgcaa")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
