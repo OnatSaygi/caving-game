@@ -158,7 +158,7 @@ scale = Vector2(0.65, 1.01667)
 sprite_frames = SubResource("SpriteFrames_oowe2")
 animation = &"jumar"
 autoplay = "stop"
-frame_progress = 0.207749
+frame_progress = 0.670119
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16.5)
