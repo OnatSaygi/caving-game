@@ -85,10 +85,7 @@ func _process(delta):
 	for i in segment_count:
 		rope_points.append(last_segment.position)
 		last_segment = last_segment.prevSegment()
-		# simulating rappelling up
-		#if i == 20:
-		#	last_segment.mass = 70 + abs(sin( (Time.get_ticks_msec()%2000)*TAU/2000) )*20
-		#	print(last_segment.mass)
+
 
 	# Call _draw()
 	queue_redraw()
