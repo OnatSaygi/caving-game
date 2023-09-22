@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://by3qhgumu8xct"]
+
+[ext_resource type="PackedScene" uid="uid://koalireiwccl" path="res://objects/player.tscn" id="1_dsvdh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqt3g"]
+size = Vector2(300, 40)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_dsvdh")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-27, 403)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_right = 300.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(150, 20)
+shape = SubResource("RectangleShape2D_bqt3g")

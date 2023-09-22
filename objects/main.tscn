@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://br20gx4fu7ib2" path="res://objects/tile_map.tscn" id="1_rjwna"]
 [ext_resource type="PackedScene" uid="uid://koalireiwccl" path="res://objects/player.tscn" id="2_nq1sq"]
 [ext_resource type="Gradient" uid="uid://dktx68nnxuyeg" path="res://objects/new_gradient.tres" id="2_pwbqo"]
+[ext_resource type="Environment" uid="uid://dyy1s4tkrfuw0" path="res://objects/new_environment.tres" id="4_mttha"]
 [ext_resource type="PackedScene" uid="uid://c8rn8oo2giaha" path="res://objects/rope_base.tscn" id="5_qc4gx"]
 [ext_resource type="PackedScene" uid="uid://bbiuk3q8ty5rj" path="res://objects/parallax.tscn" id="5_tpadb"]
 
@@ -1180,19 +1181,6 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_0g3ag")
 sources/1 = SubResource("TileSetAtlasSource_8fbsq")
 
-[sub_resource type="Environment" id="Environment_a45ty"]
-background_mode = 3
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 8.0
-glow_strength = 2.0
-glow_bloom = 1.0
-glow_blend_mode = 1
-glow_hdr_threshold = 0.0
-glow_hdr_scale = 0.26
-glow_hdr_luminance_cap = 76.34
-glow_map_strength = 1.0
-
 [node name="main" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_rjwna")]
@@ -1204,9 +1192,11 @@ position = Vector2(1210, -1700)
 scale = Vector2(12, 12)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_a45ty")
+environment = ExtResource("4_mttha")
 
 [node name="parallax" parent="." instance=ExtResource("5_tpadb")]
+offset = Vector2(0, -1230)
+transform = Transform2D(1, 0, 0, 1, 0, -1230)
 
 [node name="RopeBase" parent="." instance=ExtResource("5_qc4gx")]
 position = Vector2(-120, -723)
