@@ -19,6 +19,7 @@ transform = Transform2D(1, 0, 0, 1, 0, -1230)
 position = Vector2(-120, -723)
 
 [node name="TileMap" parent="." instance=ExtResource("1_rjwna")]
+mapSize = Vector2i(100, 100)
 
 [node name="player" parent="TileMap" instance=ExtResource("2_nq1sq")]
 position = Vector2(1500, -1290)

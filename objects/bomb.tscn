@@ -162,5 +162,7 @@ libraries = {
 }
 
 [node name="beep" type="AudioStreamPlayer" parent="AnimationPlayer"]
+volume_db = -18.02
 
 [node name="boom" type="AudioStreamPlayer" parent="AnimationPlayer"]
+volume_db = -16.99

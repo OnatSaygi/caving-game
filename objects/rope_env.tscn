@@ -106,6 +106,8 @@ grow_vertical = 2
 shape = SubResource("RectangleShape2D_6g87x")
 
 [node name="CharacterBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_qxa32")
 script = SubResource("GDScript_wdeos")
 

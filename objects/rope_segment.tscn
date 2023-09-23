@@ -4,19 +4,28 @@
 friction = 0.2
 
 [sub_resource type="GDScript" id="GDScript_qgcaa"]
-script/source = "extends RigidBody2D
+script/source = "class_name RopeSegment2D
+extends RigidBody2D
 
-func prevSegment() -> PhysicsBody2D:
-	return get_node($PinJoint2D.node_a)
+const segment_scene = preload('res://objects/rope_segment.tscn')
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var prev_segment: PhysicsBody2D: set = set_prev_segment
+var next_segment: PhysicsBody2D
 
+func set_prev_segment(segment: PhysicsBody2D):
+	prev_segment = segment
+	
+	$PinJoint2D.node_a = segment.get_path()
+	position = segment.position
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func add_segment_as_sibling() -> PhysicsBody2D:
+	var sibling = segment_scene.instantiate()
+	sibling.position = $Marker2D.position
+	sibling.prev_segment = self
+	next_segment = sibling
+	add_sibling(sibling)
+	
+	return sibling
 "
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6nxcq"]
@@ -24,20 +33,13 @@ b = Vector2(0, 20)
 
 [node name="RopeSegment" type="RigidBody2D"]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 20)
 physics_material_override = SubResource("PhysicsMaterial_58g2c")
 linear_damp = 0.5
 angular_damp = 3.0
 script = SubResource("GDScript_qgcaa")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_b = NodePath("..")
-softness = 0.01
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 20)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -51,3 +53,10 @@ grow_horizontal = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_6nxcq")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 20)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_b = NodePath("..")
+softness = 0.01
