@@ -33,6 +33,9 @@ bomb={
 
 2d_render/layer_1="global"
 2d_render/layer_2="player"
+2d_physics/layer_1="player"
+2d_physics/layer_2="rope"
+2d_physics/layer_3="bomb"
 
 [rendering]
 

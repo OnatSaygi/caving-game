@@ -8,11 +8,6 @@ const SPEED = 200
 func _ready():
 	print(direction)
 	set_axis_velocity(direction*SPEED)
-	#boom.connect(get_parent().get_parent()_on_boom.bind())
-	#button.pressed.connect(_on_pressed.bind(button))
-
-#func _on_pressed(button):
-#    print(button.name, " was pressed")
 
 func explode():
 	emit_signal('boom')

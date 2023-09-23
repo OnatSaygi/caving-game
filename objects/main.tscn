@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7gtre41sy2t8"]
+[gd_scene load_steps=8 format=3 uid="uid://b7gtre41sy2t8"]
 
+[ext_resource type="Script" path="res://objects/main.gd" id="1_2two4"]
 [ext_resource type="PackedScene" uid="uid://br20gx4fu7ib2" path="res://objects/tile_map.tscn" id="1_rjwna"]
 [ext_resource type="PackedScene" uid="uid://koalireiwccl" path="res://objects/player.tscn" id="2_nq1sq"]
 [ext_resource type="Environment" uid="uid://dyy1s4tkrfuw0" path="res://objects/new_environment.tres" id="4_mttha"]
 [ext_resource type="PackedScene" uid="uid://c8rn8oo2giaha" path="res://objects/rope_base.tscn" id="5_qc4gx"]
 [ext_resource type="PackedScene" uid="uid://bbiuk3q8ty5rj" path="res://objects/parallax.tscn" id="5_tpadb"]
+[ext_resource type="PackedScene" uid="uid://dwhnbu66vc168" path="res://objects/wall.tscn" id="6_mdwdk"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_2two4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_mttha")
@@ -19,8 +22,13 @@ transform = Transform2D(1, 0, 0, 1, 0, -1230)
 position = Vector2(-120, -723)
 
 [node name="TileMap" parent="." instance=ExtResource("1_rjwna")]
-mapSize = Vector2i(100, 100)
 
 [node name="player" parent="TileMap" instance=ExtResource("2_nq1sq")]
 position = Vector2(1500, -1290)
 scale = Vector2(10, 10)
+
+[node name="Wall" parent="." instance=ExtResource("6_mdwdk")]
+position = Vector2(115, -443)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../Wall")

@@ -4,8 +4,8 @@ extends StaticBody2D
 const segment_scene = preload('res://objects/rope_segment.tscn')
 
 var segment_count: int = 25
-var first_segment: PhysicsBody2D
-var last_segment: PhysicsBody2D
+var first_segment: RopeSegment2D
+var last_segment: RopeSegment2D
 
 func _angle_difference(angle_a: float, angle_b: float) -> float:
 	var diff := angle_a - angle_b
@@ -71,14 +71,14 @@ func _draw():
 			rope_colors[i].append(palllette[(i+j)%3])
 	
 	# Draw rope
-	draw_polyline_colors(bezier_points, PackedColorArray(rope_colors[0]), 7, true)
-	draw_polyline_colors(bezier_points, PackedColorArray(rope_colors[1]), 4, true)
-	draw_polyline_colors(bezier_points, PackedColorArray(rope_colors[2]), 1, true)
+	draw_polyline_colors(bezier_points, PackedColorArray(rope_colors[0]), 7.0/2, true)
+	draw_polyline_colors(bezier_points, PackedColorArray(rope_colors[1]), 4.0/2, true)
+	draw_polyline_colors(bezier_points, PackedColorArray(rope_colors[2]), 1.0/2, true)
 
 func _ready():
 	# Set first segment
 	first_segment = segment_scene.instantiate()
-	first_segment.prev_segment = self
+	first_segment.root = self
 	first_segment.position = $Marker2D.position
 	first_segment.rotation = rotation
 	add_child(first_segment)

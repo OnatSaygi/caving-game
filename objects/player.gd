@@ -7,21 +7,23 @@ var directionPast = 0
 
 const dead_weight_scene = preload("res://objects/dead_weight.tscn")
 var dead_weight: DeadWeight2D
-var rope_on: PhysicsBody2D
-var on_rope: bool = false
-var rope_joint: Joint2D
+var on_rope: RopeSegment2D
+var rope_progress = 0
+const ROPE_SPEED = 100
+const ROPE_LENGTH = 50.0
 
 const bombScn = preload("res://objects/bomb.tscn")
 
+@warning_ignore("unused_parameter")
 func _process(delta):
+	$AnimatedSprite2D.flip_h = directionPast != 1
+
 	if Input.is_action_just_pressed("bomb"):
 		print('boom')
 		var bomb = bombScn.instantiate()
 		bomb.position = position
 		bomb.direction = Vector2(directionPast, -1)
-		get_parent().add_child(bomb)
-	
-	$AnimatedSprite2D.flip_h = directionPast != 1
+		add_sibling(bomb)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -45,25 +47,37 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("stop")
 	
 	if on_rope:
-		global_position = dead_weight.global_position
-		if Input.is_action_just_pressed('ui_up'):
-			$AnimatedSprite2D.play("jumar")
+		if not on_rope.prev_segment:
+			pass
+		if rope_progress > ROPE_LENGTH:
+			rope_progress = 0
+			on_rope = on_rope.prev_segment
+			rope_attach_deadweight(on_rope)
 			
-			var prev_segment = get_node(rope_joint.node_b).prevSegment()
-			rope_weight.global_position = prev_segment.global_position
-			rope_joint.node_b = prev_segment.get_path()
+		var next = on_rope.prev_segment
+		var next_pos = next.global_position
+		global_position = lerp(dead_weight.global_position, next_pos, rope_progress/ROPE_LENGTH)
+		
+		if Input.is_action_pressed('ui_left'):
+			$AnimatedSprite2D.play("jumar")
+			rope_progress += ROPE_SPEED * delta
 		elif Input.is_action_just_pressed("ui_down"):
-			on_rope = false
+			on_rope = null
 			velocity = Vector2(0, 0)
-			rope_weight.queue_free()
+			dead_weight.queue_free()
+			dead_weight = null
 	else:
 		move_and_slide()
 
-
 func _on_area_2d_body_entered(body):
-	if body is RigidBody2D and not on_rope and Input.is_action_pressed('ui_up'):
-		print(body.name)
-		dead_weight = dead_weight_scene.instantiate()
-		dead_weight.attach(body)
-		add_sibling(dead_weight)
-		on_rope = true
+	if body is RopeSegment2D and not on_rope and Input.is_action_pressed('ui_up'):
+		on_rope = body
+		rope_attach_deadweight(body)
+
+func rope_attach_deadweight(rope: RopeSegment2D):
+	if dead_weight:
+		dead_weight.queue_free()
+		dead_weight = null
+	dead_weight = dead_weight_scene.instantiate()
+	add_sibling(dead_weight)
+	dead_weight.attach(rope)

@@ -1,11 +1,11 @@
 extends TileMap
 
-@export var mapSize = Vector2i(100, 100)
-@export var layer_treshold = [0.13, 0.00, -0.10, -0.40]
-@export var noise_x_scale = 10
-@export var noise_y_scale = 4
-@export var noise_z_scale = 1
-@export var noise_z_offset = 9
+const mapSize = Vector2i(50, 50)
+const layer_treshold = [0.13, 0.00, -0.10, -0.40]
+const noise_x_scale = 10
+const noise_y_scale = 4
+const noise_z_scale = 1
+const noise_z_offset = 9
 @export var layer_gradient : Gradient
 var noise
 
@@ -74,12 +74,15 @@ func generate(mapSize):
 	
 	# Decoration
 	for layer in range(2, 4):
+		print('start', Time.get_ticks_msec())
 		var cells = []
 		for x in mapSize.x:
 			for y in mapSize.y:
 				if noise_3d_custom(x, y, noise_z_offset, layer_treshold[layer]):
 					cells.append(Vector2i(x, y))
+		print('3d noise', Time.get_ticks_msec())
 		set_cells_terrain_connect(layer, cells, 0, 1)
+		print('terrain connect', Time.get_ticks_msec())
 
 func _process(delta):
 	pass
