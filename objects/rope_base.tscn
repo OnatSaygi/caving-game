@@ -27,3 +27,7 @@ shape = SubResource("RectangleShape2D_2w3gg")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 10)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Marker2D"]
+position = Vector2(0, -10)
+node_a = NodePath("../..")

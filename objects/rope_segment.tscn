@@ -4,26 +4,27 @@
 friction = 0.2
 
 [sub_resource type="GDScript" id="GDScript_qgcaa"]
-script/source = "class_name RopeSegment2D
-extends RigidBody2D
+script/source = "extends RigidBody2D
 
 const segment_scene = preload('res://objects/rope_segment.tscn')
 
-var prev_segment: PhysicsBody2D: set = set_prev_segment
+var prev_segment: PhysicsBody2D: set = _set_prev_segment
 var next_segment: PhysicsBody2D
 
-func set_prev_segment(segment: PhysicsBody2D):
+func _set_prev_segment(segment: PhysicsBody2D):
 	prev_segment = segment
 	
-	$PinJoint2D.node_a = segment.get_path()
-	position = segment.position
-
 func add_segment_as_sibling() -> PhysicsBody2D:
-	var sibling = segment_scene.instantiate()
-	sibling.position = $Marker2D.position
-	sibling.prev_segment = self
-	next_segment = sibling
+	var sibling: RigidBody2D
+	sibling = segment_scene.instantiate()
 	add_sibling(sibling)
+
+	sibling.global_position = $Marker2D.global_position
+	sibling.global_rotation = global_rotation
+	sibling.prev_segment = self
+
+	next_segment = sibling
+	$PinJoint2D.node_a = sibling.get_path()
 	
 	return sibling
 "

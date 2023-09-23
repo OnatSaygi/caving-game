@@ -1,20 +1,11 @@
 class_name Rope2D
 extends StaticBody2D
 
-var segment_count: int = 55
+const segment_scene = preload('res://objects/rope_segment.tscn')
+
+var segment_count: int = 25
 var first_segment: PhysicsBody2D
 var last_segment: PhysicsBody2D
-var next_segment: Rope2D
-
-const segment_scene = preload('res://objects/rope_segment.tscn')
-var last_path: NodePath
-var last_pos: Vector2
-var rope: PhysicsBody2D
-
-func next() -> Rope2D:
-	return next_segment
-func prev() -> Rope2D:
-	return null
 
 func _angle_difference(angle_a: float, angle_b: float) -> float:
 	var diff := angle_a - angle_b
@@ -85,15 +76,27 @@ func _draw():
 	draw_polyline_colors(bezier_points, PackedColorArray(rope_colors[2]), 1, true)
 
 func _ready():
-	# Instance x amount of interchained rope segments
+	# Set first segment
 	first_segment = segment_scene.instantiate()
-	first_segment.set_prev_segment(self)
-	last_segment = first_segment
+	first_segment.prev_segment = self
+	first_segment.position = $Marker2D.position
+	first_segment.rotation = rotation
 	add_child(first_segment)
+	$Marker2D/PinJoint2D.node_b = first_segment.get_path()
 	
-	for i in segment_count:
+	# Extend the remaining segments
+	last_segment = first_segment
+	for i in segment_count-2:
 		last_segment = last_segment.add_segment_as_sibling()
+
+func extend_rope():
+	segment_count += 1
+	last_segment = last_segment.add_segment_as_sibling()
 	
 func _process(delta):
 	delta = delta
+	
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		extend_rope()
 	queue_redraw()

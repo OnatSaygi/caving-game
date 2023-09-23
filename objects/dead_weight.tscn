@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://e3nwdn0onje8"]
+
+[ext_resource type="Script" path="res://objects/dead_weight.gd" id="1_nkolf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3dtw"]
+
+[node name="DeadWeight2D" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+mass = 50.0
+script = ExtResource("1_nkolf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.839216, 0.415686, 0.337255, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k3dtw")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("..")

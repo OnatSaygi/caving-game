@@ -3,14 +3,15 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -900.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var directionPast = 0
 
+const dead_weight_scene = preload("res://objects/dead_weight.tscn")
+var dead_weight: DeadWeight2D
 var rope_on: PhysicsBody2D
-var rope_weight: RigidBody2D
 var on_rope: bool = false
 var rope_joint: Joint2D
 
 const bombScn = preload("res://objects/bomb.tscn")
-var directionPast = 0
 
 func _process(delta):
 	if Input.is_action_just_pressed("bomb"):
@@ -44,9 +45,10 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("stop")
 	
 	if on_rope:
-		global_position = rope_weight.global_position
+		global_position = dead_weight.global_position
 		if Input.is_action_just_pressed('ui_up'):
 			$AnimatedSprite2D.play("jumar")
+			
 			var prev_segment = get_node(rope_joint.node_b).prevSegment()
 			rope_weight.global_position = prev_segment.global_position
 			rope_joint.node_b = prev_segment.get_path()
@@ -61,27 +63,7 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if body is RigidBody2D and not on_rope and Input.is_action_pressed('ui_up'):
 		print(body.name)
+		dead_weight = dead_weight_scene.instantiate()
+		dead_weight.attach(body)
+		add_sibling(dead_weight)
 		on_rope = true
-		rope_weight = RigidBody2D.new()
-		add_sibling(rope_weight)
-		rope_weight.collision_layer = 0
-		rope_weight.collision_mask = 0
-		rope_weight.mass = 50
-		rope_weight.global_position = body.global_position
-		
-		rope_joint = PinJoint2D.new()
-		rope_joint.node_a = rope_weight.get_path()
-		rope_joint.node_b = body.get_path()
-		rope_weight.add_child(rope_joint)
-		
-	#print(body)
-	#print(typeof(body))
-	#if body is RigidBody2D and not on_rope and Input.is_action_pressed('ui_up'):
-	#	global_position = body.global_position
-	#	$PinJoint2D.node_b = body.get_path()
-	#	rope_on = body
-	#	on_rope = true
-		#gravity = 0
-		#velocity = position - body.position
-		#move_and_slide()
-	#	velocity = Vector2(0, 0)
