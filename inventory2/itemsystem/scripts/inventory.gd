@@ -41,6 +41,7 @@ func _init(
 		) -> void:
 	items = _items
 	filter = _filter
+	print('egegegege')
 	return
 
 func _to_string():

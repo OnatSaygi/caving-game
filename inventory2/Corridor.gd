@@ -1,11 +1,17 @@
-class_name Corridor extends Node
+class_name Corridor extends Place
+@export var type: Type
 
-@export var wind: float = 0.2
-@export var lenght: int = 5
-@export var sprink: float = 0.23
-@export var loose_rocks: float = 0.43
-@export var rocks_cleaned: bool = false
-@export var mud: bool = false
+enum Type {
+	traverse,
+	shaft_up,
+	shaft_down,
+	boulder,
+	walk,
+	climb,
+	crab_walk,
+	lake,
+	siphon,
+}
 
 '''
 turler
@@ -59,5 +65,3 @@ lake
 siphon
 # sadece wetsuit ve dalis takimi
 '''
-RE65 ,L;]
-,

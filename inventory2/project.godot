@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="inventory2"
-config/features=PackedStringArray("4.1", "GL Compatibility")
+config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://main/icon.svg"
 
 [rendering]
