@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dkdgslmlu8qxg"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_ldg3e"]
+[ext_resource type="Texture2D" uid="uid://cvgcubhiw17hl" path="res://item/items/assets/laser.png" id="2_8teab"]
+
+[resource]
+script = ExtResource("1_ldg3e")
+name = "Survey Tools"
+description = ""
+stackable = false
+texture = ExtResource("2_8teab")
+weight = 250
+volume = 400

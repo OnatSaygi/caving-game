@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b7y0ipprdn0bp"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_l0ug4"]
+[ext_resource type="Texture2D" uid="uid://dnn08xj4hlnmb" path="res://item/items/assets/carabiner.png" id="2_l5376"]
+
+[resource]
+script = ExtResource("1_l0ug4")
+name = "Carabiner"
+description = ""
+stackable = false
+texture = ExtResource("2_l5376")
+weight = 50
+volume = 40

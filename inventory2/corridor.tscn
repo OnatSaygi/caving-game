@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmmvgq10fwop7"]
+
+[ext_resource type="Script" path="res://Corridor.gd" id="1_i76e4"]
+
+[node name="Corridor" type="Node"]
+script = ExtResource("1_i76e4")
+wind = null
+lenght = null
+sprink = null
+loose_rocks = null
+rocks_cleaned = null
+mud = null

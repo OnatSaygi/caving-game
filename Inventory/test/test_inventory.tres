@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=13 format=3 uid="uid://dcj15gsxlhbvo"]
+
+[ext_resource type="Script" path="res://item/inventory_data.gd" id="1_e0jgv"]
+[ext_resource type="Resource" uid="uid://3garlbdnipd4" path="res://item/items/battery.tres" id="2_cq5dr"]
+[ext_resource type="Script" path="res://item/slot_data.gd" id="3_cjsn8"]
+[ext_resource type="Resource" uid="uid://bvcccchtc86yr" path="res://item/items/drill.tres" id="4_ub25c"]
+[ext_resource type="Resource" uid="uid://diyo3lrboovm8" path="res://item/items/food.tres" id="5_gaqs6"]
+[ext_resource type="Resource" uid="uid://xpms1bkvoh13" path="res://item/items/rope.tres" id="6_h418t"]
+[ext_resource type="Resource" uid="uid://b7y0ipprdn0bp" path="res://item/items/carabiner.tres" id="7_vmeho"]
+
+[sub_resource type="Resource" id="Resource_1c0yc"]
+script = ExtResource("3_cjsn8")
+item_data = ExtResource("2_cq5dr")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_kuf0y"]
+script = ExtResource("3_cjsn8")
+item_data = ExtResource("4_ub25c")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ptwct"]
+script = ExtResource("3_cjsn8")
+item_data = ExtResource("5_gaqs6")
+quantity = 11
+
+[sub_resource type="Resource" id="Resource_e00ap"]
+script = ExtResource("3_cjsn8")
+item_data = ExtResource("6_h418t")
+quantity = 30
+
+[sub_resource type="Resource" id="Resource_exiqp"]
+script = ExtResource("3_cjsn8")
+item_data = ExtResource("7_vmeho")
+quantity = 10
+
+[resource]
+resource_name = "TestInventoryyy"
+script = ExtResource("1_e0jgv")
+weight_capacity = 0
+volume_capacity = 0
+slot_datas = Array[ExtResource("3_cjsn8")]([SubResource("Resource_1c0yc"), SubResource("Resource_kuf0y"), SubResource("Resource_ptwct"), SubResource("Resource_e00ap"), SubResource("Resource_exiqp")])

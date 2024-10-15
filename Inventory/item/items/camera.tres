@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dbeulsjvp7ytb"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_7i342"]
+[ext_resource type="Texture2D" uid="uid://xvgforpnyuh2" path="res://item/items/assets/dslr-camera.png" id="2_mo1u0"]
+
+[resource]
+script = ExtResource("1_7i342")
+name = "Camera"
+description = ""
+stackable = false
+texture = ExtResource("2_mo1u0")
+weight = 1200
+volume = 2800

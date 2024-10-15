@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://de5biuvbu53wj"]
+
+[ext_resource type="Script" path="res://itemsystem/scripts/item_data.gd" id="1_118rg"]
+[ext_resource type="Texture2D" uid="uid://bewa1h43lu8wc" path="res://itemsystem/itemsprites/battery.png" id="1_p8fvy"]
+
+[resource]
+script = ExtResource("1_118rg")
+name = "Battery"
+type = 1
+icon = ExtResource("1_p8fvy")
+description = ""
+volume = 20
+weight = 50
+weight_offset = 0

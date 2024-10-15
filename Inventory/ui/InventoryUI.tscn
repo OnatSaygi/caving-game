@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://crl477kvtmphk"]
+
+[ext_resource type="Script" path="res://ui/InventoryUI.gd" id="1_6bpaq"]
+[ext_resource type="Texture2D" uid="uid://dsuidywqcwrra" path="res://ui/aseets/close.png" id="2_nbbnm"]
+[ext_resource type="PackedScene" uid="uid://ddkl8pov4jeqk" path="res://ui/SlotUI.tscn" id="3_33udb"]
+[ext_resource type="Texture2D" uid="uid://dm6v8dkl7xn71" path="res://ui/aseets/size.png" id="4_ecaaw"]
+[ext_resource type="Texture2D" uid="uid://bausee5ysnyqm" path="res://ui/aseets/heavy.png" id="5_x6oyi"]
+
+[node name="InventoryUI" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.375868
+anchor_bottom = 0.367284
+offset_bottom = 1.52588e-05
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_default_cursor_shape = 11
+script = ExtResource("1_6bpaq")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Title Bar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Chest" type="Label" parent="VBoxContainer/Title Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Chest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/Title Bar"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_mode = 0
+icon = ExtResource("2_nbbnm")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Items" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SlotUI" parent="VBoxContainer/Items" instance=ExtResource("3_33udb")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="SummaryBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="null" type="Label" parent="VBoxContainer/SummaryBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Σ"
+horizontal_alignment = 2
+
+[node name="Volume" type="PanelContainer" parent="VBoxContainer/SummaryBar"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Volume" type="HBoxContainer" parent="VBoxContainer/SummaryBar/Volume"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Volume" type="Label" parent="VBoxContainer/SummaryBar/Volume/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "123"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SummaryBar/Volume/Volume"]
+layout_mode = 2
+texture = ExtResource("4_ecaaw")
+stretch_mode = 3
+
+[node name="Weight" type="PanelContainer" parent="VBoxContainer/SummaryBar"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Weight" type="HBoxContainer" parent="VBoxContainer/SummaryBar/Weight"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Weight" type="Label" parent="VBoxContainer/SummaryBar/Weight/Weight"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "11"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SummaryBar/Weight/Weight"]
+layout_mode = 2
+texture = ExtResource("5_x6oyi")
+stretch_mode = 3

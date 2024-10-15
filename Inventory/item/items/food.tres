@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://diyo3lrboovm8"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_ow32q"]
+[ext_resource type="Texture2D" uid="uid://cb6my7bjo3hh0" path="res://item/items/assets/biryani.png" id="2_j6wft"]
+
+[resource]
+script = ExtResource("1_ow32q")
+name = "Food"
+description = ""
+stackable = false
+texture = ExtResource("2_j6wft")
+weight = 70
+volume = 100

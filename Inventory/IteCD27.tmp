@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddkl8pov4jeqk"]
+
+[ext_resource type="Texture2D" uid="uid://d0qye07dgd02q" path="res://ItemSprite_bread.webp" id="1_6ekxd"]
+[ext_resource type="Script" path="res://ItemUI.gd" id="1_m5vn6"]
+[ext_resource type="Texture2D" uid="uid://fqjiqqddm6aa" path="res://measuring_cup.png" id="2_lpruu"]
+[ext_resource type="Texture2D" uid="uid://c6dv35ujdfpju" path="res://weight.png" id="3_xk7xb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8804g"]
+line_spacing = 0.0
+
+[node name="ItemListedUI" type="HBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+alignment = 1
+script = ExtResource("1_m5vn6")
+
+[node name="Icon" type="PanelContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+
+[node name="Icon" type="TextureRect" parent="Icon"]
+layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+texture = ExtResource("1_6ekxd")
+stretch_mode = 3
+
+[node name="Count" type="Label" parent="Icon"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_vertical = 1
+mouse_default_cursor_shape = 1
+text = "1"
+label_settings = SubResource("LabelSettings_8804g")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 1
+text = "Bread"
+vertical_alignment = 1
+
+[node name="Volume" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+
+[node name="Volume" type="HBoxContainer" parent="Volume"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+
+[node name="TotalVolume" type="Label" parent="Volume/Volume"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_default_cursor_shape = 1
+text = "123"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureVolume" type="TextureRect" parent="Volume/Volume"]
+layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+texture = ExtResource("2_lpruu")
+stretch_mode = 3
+
+[node name="Weight" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+
+[node name="Weight" type="HBoxContainer" parent="Weight"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+
+[node name="TotalWeight" type="Label" parent="Weight/Weight"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_default_cursor_shape = 1
+text = "111"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureWeight" type="TextureRect" parent="Weight/Weight"]
+layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 1
+texture = ExtResource("3_xk7xb")
+stretch_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

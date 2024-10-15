@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dh0qudo1pnx0p"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_y1c5r"]
+[ext_resource type="Texture2D" uid="uid://b3dbhv6p3frn4" path="res://item/items/assets/sport-bag.png" id="2_7gpon"]
+
+[resource]
+script = ExtResource("1_y1c5r")
+name = "Bag"
+description = "22l cylinder bag"
+stackable = false
+texture = ExtResource("2_7gpon")
+weight = 550
+volume = 1100

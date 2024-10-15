@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://3garlbdnipd4"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_afsna"]
+[ext_resource type="Texture2D" uid="uid://dgdvf5tmq2gqu" path="res://item/items/assets/battery.png" id="2_4jcm5"]
+
+[resource]
+script = ExtResource("1_afsna")
+name = "Battery"
+description = ""
+stackable = false
+texture = ExtResource("2_4jcm5")
+weight = 50
+volume = 20

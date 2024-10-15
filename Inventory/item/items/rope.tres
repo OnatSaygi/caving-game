@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://xpms1bkvoh13"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_57in0"]
+[ext_resource type="Texture2D" uid="uid://yydivm42rj85" path="res://item/items/assets/rope.png" id="2_1rsyx"]
+
+[resource]
+script = ExtResource("1_57in0")
+name = "Rope"
+description = ""
+stackable = false
+texture = ExtResource("2_1rsyx")
+weight = 80
+volume = 200

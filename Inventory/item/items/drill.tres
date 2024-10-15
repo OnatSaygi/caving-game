@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bvcccchtc86yr"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_f56dj"]
+[ext_resource type="Texture2D" uid="uid://bi41ayjiqkyue" path="res://item/items/assets/construction-tool.png" id="2_mppf6"]
+
+[resource]
+script = ExtResource("1_f56dj")
+name = "Drill"
+description = ""
+stackable = false
+texture = ExtResource("2_mppf6")
+weight = 2800
+volume = 2000

@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://crl477kvtmphk"]
+
+[ext_resource type="Texture2D" uid="uid://dsuidywqcwrra" path="res://close.png" id="1_c5a6l"]
+[ext_resource type="Script" path="res://Chest.gd" id="1_wd1w7"]
+[ext_resource type="Texture2D" uid="uid://fqjiqqddm6aa" path="res://measuring_cup.png" id="3_m3kx7"]
+[ext_resource type="Texture2D" uid="uid://c6dv35ujdfpju" path="res://weight.png" id="4_stgal"]
+
+[node name="Chest" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.126736
+anchor_top = 0.0987654
+anchor_right = 0.502604
+anchor_bottom = 0.466049
+size_flags_horizontal = 3
+size_flags_vertical = 6
+mouse_default_cursor_shape = 11
+script = ExtResource("1_wd1w7")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Title Bar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Chest" type="Label" parent="VBoxContainer/Title Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Chest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/Title Bar"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+icon = ExtResource("1_c5a6l")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Items" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Summary Bar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="null" type="Label" parent="VBoxContainer/Summary Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Σ"
+horizontal_alignment = 2
+
+[node name="Volume" type="PanelContainer" parent="VBoxContainer/Summary Bar"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Volume" type="HBoxContainer" parent="VBoxContainer/Summary Bar/Volume"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Summary Bar/Volume/Volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "123"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Summary Bar/Volume/Volume"]
+layout_mode = 2
+texture = ExtResource("3_m3kx7")
+stretch_mode = 3
+
+[node name="Weight" type="PanelContainer" parent="VBoxContainer/Summary Bar"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Weight" type="HBoxContainer" parent="VBoxContainer/Summary Bar/Weight"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Summary Bar/Weight/Weight"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "11"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Summary Bar/Weight/Weight"]
+layout_mode = 2
+texture = ExtResource("4_stgal")
+stretch_mode = 3
